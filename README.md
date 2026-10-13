@@ -63,3 +63,8 @@ This is an educational simulation, not a stock-price prediction tool. Results de
 - Add confidence intervals and additional risk measures.
 - Test different return and volatility assumptions.
 - Add automated tests and more visualizations.
+## Simulation Results
+
+The Monte Carlo simulation generates 10,000 possible stock price paths over 252 trading days using Geometric Brownian Motion.
+
+![Monte Carlo Stock Price Simulation](simulation.png)
