@@ -68,3 +68,31 @@ This is an educational simulation, not a stock-price prediction tool. Results de
 The Monte Carlo simulation generates 10,000 possible stock price paths over 252 trading days using Geometric Brownian Motion.
 
 ![Monte Carlo Stock Price Simulation](simulation.png)
+
+## Additional Analysis
+
+### 1. Final Stock Price Distribution
+
+A histogram visualizes the distribution of final stock prices across 10,000 Monte Carlo simulations. It helps illustrate the range and frequency of possible outcomes after 252 trading days.
+
+![Final Stock Price Distribution](final_prices_histogram.png)
+
+### 2. Volatility Comparison
+
+The simulation compares annual volatility levels of 10%, 20%, and 40% while keeping the initial price, annual return, and simulation horizon unchanged. This illustrates how volatility affects the spread of possible final stock prices.
+
+![Volatility Comparison](volatility_comparison.png)
+
+### 3. Model Validation
+
+The simulated average final price is compared with the theoretical expected price under the Geometric Brownian Motion model.
+
+- Simulated average final price: ₹108.16
+- Theoretical expected final price: ₹108.33
+- Absolute difference: ₹0.17
+
+The close agreement is consistent with the expected behavior of a Monte Carlo simulation. It does not establish that the model accurately predicts real-world stock prices.
+
+### Limitations
+
+This project uses simplified assumptions, including constant annual return and volatility. Actual stock markets may behave differently, and the simulation should not be treated as a reliable forecast of future prices.

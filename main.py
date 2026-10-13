@@ -77,3 +77,56 @@ plt.tight_layout()
 plt.savefig("simulation.png", dpi=150)
 plt.show()
 
+# Histogram of final stock prices
+plt.figure(figsize=(10, 6))
+
+plt.hist(final_prices, bins=50, edgecolor="black")
+
+plt.title("Distribution of Final Stock Prices")
+plt.xlabel("Final Stock Price (₹)")
+plt.ylabel("Number of Simulations")
+
+plt.grid(axis="y", alpha=0.3)
+plt.tight_layout()
+
+plt.savefig("final_prices_histogram.png", dpi=150)
+plt.show()
+
+# Compare different volatility levels
+volatility_levels = [0.10, 0.20, 0.40]
+
+plt.figure(figsize=(10, 6))
+
+for volatility in volatility_levels:
+    Z_comparison = np.random.normal(
+        0, 1, (number_of_days, number_of_simulations)
+    )
+
+    comparison_prices = np.zeros(
+        (number_of_days + 1, number_of_simulations)
+    )
+    comparison_prices[0] = initial_price
+
+    for day in range(1, number_of_days + 1):
+        comparison_prices[day] = comparison_prices[day - 1] * np.exp(
+            (annual_return - 0.5 * volatility**2) * dt
+            + volatility * np.sqrt(dt) * Z_comparison[day - 1]
+        )
+
+    plt.hist(
+        comparison_prices[-1],
+        bins=60,
+        density=True,
+        alpha=0.4,
+        label=f"Volatility {volatility:.0%}"
+    )
+
+plt.title("Final Stock Price Distribution at Different Volatility Levels")
+plt.xlabel("Final Stock Price (₹)")
+plt.ylabel("Density")
+plt.legend()
+plt.grid(axis="y", alpha=0.3)
+plt.tight_layout()
+plt.savefig("volatility_comparison.png", dpi=150)
+plt.show()
+
